@@ -1,35 +1,45 @@
 const Discord = require('discord.js');
 const { RedditSimple } = require('reddit-simple');
 const client = new Discord.Client();
-const config = require('./config.json')
+const { prefix, token } = require('./config.json');
 
+const fs = require('fs');
+client.commands = new Discord.Collection();
+
+const commandfiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+for(const file of commandfiles) {
+	const command = require(`./commands/${file}`);
+
+	client.commands.set(command.name, command);
+}
 
 client.once('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity('🐑');
+    client.user.setActivity(`${prefix}snomhelp`);
 });
 
 client.on('message', message => {
-    if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+    if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-    const args = message.content.slice(config.prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase();
+	const args = message.content.slice(prefix.length).trim().split(/ +/g);
+	const command = args.shift().toLowerCase();
 
-    if (command === 'wooloo' || command === '🐑' || command === ':sheep:') {
-        let wooloo = () => {
-            RedditSimple.RandomPost('wooloo').then((post) => {
-                let data = post[0].data;
-                if (data.over_18 || data.pinned || data.is_self) {
-                    wooloo();
-                    return;
-                }
-                message.channel.send(`${data.title}\n${data.url}`);
-            });
-        };
-        wooloo();
-    } else if (command === 'help') {
-        message.channel.send(`type ${config.prefix}wooloo`);
-    }
+	const channel = message.channel.id;
+
+	letterCase = message.content.toLowerCase();
+
+	if (letterCase === `${prefix}snom`) {
+		client.commands.get('snom').execute(client, Discord, fs, prefix, message, args, RedditSimple);
+	}
+
+	if (letterCase === `${prefix}snomhelp`) {
+		client.commands.get('snomhelp').execute(client, Discord, fs, prefix, message, args, RedditSimple);
+	}
+
+	if (letterCase === `${prefix}snominfo`) {
+		client.commands.get('snominfo').execute(client, Discord, fs, prefix, message, args, RedditSimple);
+	}
+
 });
 
-client.login(config.token);
+client.login(token);

@@ -1,27 +1,15 @@
 {
-  "name": "wooloo-discord-bot",
-  "version": "1.0.0",
-  "description": "wooloo",
+  "name": "snom-discord-bot",
+  "version": "1.1.0",
+  "description": "A Discord Bot that sends a (Non-NSFW) Picture from r/snom",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ricardovogel/wooloo-discord-bot.git"
-  },
-  "keywords": [
-    "wooloo"
-  ],
-  "author": "Ricardo Vogel",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ricardovogel/wooloo-discord-bot/issues"
-  },
-  "homepage": "https://github.com/ricardovogel/wooloo-discord-bot#readme",
+  "author": "ricardovogel and NickNoName",
+  "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.5.1",
+    "discord.js": "^12.3.1",
     "reddit-simple": "^2.1.1"
   }
 }
