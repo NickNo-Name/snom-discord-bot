@@ -8,7 +8,7 @@ module.exports = {
 
 		message.channel.send({
             "embed": {
-                "description": `<@${client.user.id}> is currently on version ${botVersion}\n\nCode based on [wooloo-discord-bot](https://github.com/ricardovogel/wooloo-discord-bot) by [ricardovogel on github](https://github.com/ricardovogel)`,
+                "description": `<@${client.user.id}> is currently on version ${botVersion}\n\nCode based on [wooloo-discord-bot](https://github.com/ricardovogel/wooloo-discord-bot) by [ricardovogel on github](https://github.com/ricardovogel)\n\nCode modified by <@375426257938284544>`,
                 "title": "Info/Credits",
                 "color": 12117231
             }
