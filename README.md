@@ -14,6 +14,9 @@ To get Snom Bot running on your server you'll need to do the following
 6. Use node . in the folder you extracted the Bot into to start the Bot
 7. Start using Snom Bot!
 
+## Test Server
+If you'd like to test what Snom Bot can do, you can join the [Snom Bot Test Server](https://discord.gg/Yxe4SKW)
+
 ## Special Thanks
 A Special Thanks to ricardovogel for creating the original wooloo-discord-bot
 

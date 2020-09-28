@@ -1,6 +1,6 @@
 {
   "name": "snom-discord-bot",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A Discord Bot that sends a (Non-NSFW) Picture from r/snom",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.3.1",
+    "get-youtube-id": "^1.0.1",
     "reddit-simple": "^2.1.1"
   }
 }

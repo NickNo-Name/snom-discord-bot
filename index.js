@@ -24,19 +24,15 @@ client.on('message', message => {
 	const args = message.content.slice(prefix.length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
 
-	const channel = message.channel.id;
-
-	letterCase = message.content.toLowerCase();
-
-	if (letterCase === `${prefix}snom`) {
+	if (command == `snom`) {
 		client.commands.get('snom').execute(client, Discord, fs, prefix, message, args, RedditSimple);
 	}
 
-	if (letterCase === `${prefix}snomhelp`) {
+	if (command == `snomhelp`) {
 		client.commands.get('snomhelp').execute(client, Discord, fs, prefix, message, args, RedditSimple);
 	}
 
-	if (letterCase === `${prefix}snominfo`) {
+	if (command == `snominfo`) {
 		client.commands.get('snominfo').execute(client, Discord, fs, prefix, message, args, RedditSimple);
 	}
 
