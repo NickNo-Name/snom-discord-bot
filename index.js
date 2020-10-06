@@ -1,7 +1,10 @@
+require('dotenv').config();
 const Discord = require('discord.js');
 const { RedditSimple } = require('reddit-simple');
-const client = new Discord.Client();
-const { prefix, token } = require('./config.json');
+const { Client } = require('discord.js');
+const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
+const prefix = (process.env.prefix);
+client.login(process.env.TOKEN);
 
 const fs = require('fs');
 client.commands = new Discord.Collection();
@@ -15,7 +18,7 @@ for(const file of commandfiles) {
 
 client.once('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity(`${prefix}snomhelp`);
+    client.user.setActivity(`${prefix}help`);
 });
 
 client.on('message', message => {
@@ -28,14 +31,12 @@ client.on('message', message => {
 		client.commands.get('snom').execute(client, Discord, fs, prefix, message, args, RedditSimple);
 	}
 
-	if (command == `snomhelp`) {
-		client.commands.get('snomhelp').execute(client, Discord, fs, prefix, message, args, RedditSimple);
+	if (command == `help`) {
+		client.commands.get('help').execute(client, Discord, fs, prefix, message, args, RedditSimple);
 	}
 
-	if (command == `snominfo`) {
-		client.commands.get('snominfo').execute(client, Discord, fs, prefix, message, args, RedditSimple);
+	if (command == `info`) {
+		client.commands.get('info').execute(client, Discord, fs, prefix, message, args, RedditSimple);
 	}
 
 });
-
-client.login(token);
